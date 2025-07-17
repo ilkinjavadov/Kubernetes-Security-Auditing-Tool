@@ -3,7 +3,6 @@ package clusterconfig
 import (
     "context"
     "fmt"
-    "kube-sec-audit/pkg/podsecurity"
 
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
     "k8s.io/client-go/kubernetes"
