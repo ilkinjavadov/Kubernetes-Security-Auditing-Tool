@@ -8,6 +8,7 @@ import (
     "github.com/spf13/cobra"
     "kube-sec-audit/pkg/clusterconfig"
     "kube-sec-audit/pkg/podsecurity"
+    "kube-sec-audit/pkg/imagescanner"
 
 
 )
