@@ -1,5 +1,9 @@
 # Kube-Sec-Audit
 
+<p align="center">
+  <img src="kubee.png" alt="XRecon Logo" width="250" />
+</p>
+
 Comprehensive Kubernetes security auditing tool that detects misconfigurations, vulnerabilities, and risks across your cluster using multiple integrated modules.
 
 ## Features
