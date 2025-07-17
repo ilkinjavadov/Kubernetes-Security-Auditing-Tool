@@ -1,25 +1,29 @@
-# Kube-Sec-Audit
-
+Kube-Sec-Audit
 A comprehensive Kubernetes security auditing tool integrating multiple modules to detect misconfigurations, vulnerabilities, and risks across your cluster.
 
-## Features
+Features
+RBAC Analyzer: Detects overprivileged roles and bindings
 
-- RBAC Analyzer: Detects overprivileged roles and bindings  
-- Pod Security Analyzer: Checks pod security contexts for risky settings  
-- NetworkPolicy Analyzer: Identifies missing or overly permissive network policies  
-- Image & Tag Scanner: Detects use of `latest` tags and outdated images  
-- Privileged Pod Detector: Finds pods with privileged access, host network, or hostPath mounts  
-- Secret Detector: Finds exposed secrets in cluster resources  
-- Modular design with unified JSON reporting
+Pod Security Analyzer: Checks pod security contexts for risky settings
 
-## Installation
+NetworkPolicy Analyzer: Identifies missing or overly permissive network policies
 
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/yourusername/kube-sec-audit.git
-   cd kube-sec-audit
-   ```
+Image & Tag Scanner: Detects use of latest tags and outdated images
 
+Privileged Pod Detector: Finds pods with privileged access, host network, or hostPath mounts
+
+Secret Detector: Finds exposed secrets in cluster resources
+
+Modular design with unified JSON reporting
+
+Installation
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/kube-sec-audit.git
+cd kube-sec-audit
 Build the binary:
 
 bash
@@ -65,3 +69,7 @@ imagescanner: Scan images for vulnerabilities (future)
 
 Contributing
 Contributions are welcome! Please open issues or pull requests.
+
+License
+MIT License
+
