@@ -40,6 +40,19 @@ var scanCmd = &cobra.Command{
                 }
             default:
                 fmt.Printf("Module %s not implemented yet.\n", mod)
+
+
+case "podsecurity":
+    scanner, err := podsecurity.NewScanner(kubeconfig)
+    if err != nil {
+        fmt.Println("Error initializing podsecurity scanner:", err)
+        os.Exit(1)
+    }
+    err = scanner.ScanPodsSecurity()
+    if err != nil {
+        fmt.Println("Error scanning pods:", err)
+        os.Exit(1)
+    }
             }
         }
     },
