@@ -53,6 +53,21 @@ case "podsecurity":
     if err != nil {
         fmt.Println("Error scanning pods:", err)
         os.Exit(1)
+
+case "imagescanner":
+    scanner, err := imagescanner.NewScanner(kubeconfig)
+    if err != nil {
+        fmt.Println("Error initializing image scanner:", err)
+        os.Exit(1)
+    }
+    err = scanner.ScanImages()
+    if err != nil {
+        fmt.Println("Error scanning images:", err)
+        os.Exit(1)
+    }
+
+
+
     }
             }
         }
