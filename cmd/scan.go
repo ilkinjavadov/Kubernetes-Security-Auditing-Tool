@@ -9,6 +9,7 @@ import (
     "kube-sec-audit/pkg/clusterconfig"
     "kube-sec-audit/pkg/podsecurity"
     "kube-sec-audit/pkg/imagescanner"
+    "kube-sec-audit/pkg/secretdetector"
 
 
 )
@@ -53,6 +54,7 @@ case "podsecurity":
     if err != nil {
         fmt.Println("Error scanning pods:", err)
         os.Exit(1)
+}
 
 case "imagescanner":
     scanner, err := imagescanner.NewScanner(kubeconfig)
@@ -66,12 +68,21 @@ case "imagescanner":
         os.Exit(1)
     }
 
-
-
+case "secrets":
+    detector, err := secretdetector.NewDetector(kubeconfig)
+    if err != nil {
+        fmt.Println("Error initializing secret detector:", err)
+        os.Exit(1)
     }
+    err = detector.ScanSecrets()
+    if err != nil {
+        fmt.Println("Error scanning secrets:", err)
+        os.Exit(1)
+    }
+
             }
         }
-    },
+    }
 }
 
 func init() {
