@@ -1,75 +1,57 @@
-Kube-Sec-Audit
-A comprehensive Kubernetes security auditing tool integrating multiple modules to detect misconfigurations, vulnerabilities, and risks across your cluster.
+# Kube-Sec-Audit
 
-Features
-RBAC Analyzer: Detects overprivileged roles and bindings
+Comprehensive Kubernetes security auditing tool that detects misconfigurations, vulnerabilities, and risks across your cluster using multiple integrated modules.
 
-Pod Security Analyzer: Checks pod security contexts for risky settings
+## Features
 
-NetworkPolicy Analyzer: Identifies missing or overly permissive network policies
+- **RBAC Analyzer:** Detects overprivileged roles and bindings  
+- **Pod Security Analyzer:** Checks pod security contexts for risky configurations  
+- **NetworkPolicy Analyzer:** Identifies missing or overly permissive network policies  
+- **Image & Tag Scanner:** Detects use of `latest` tags and outdated images  
+- **Privileged Pod Detector:** Finds pods with privileged access, host networking, or hostPath mounts  
+- **Secret Detector:** Finds exposed secrets in cluster resources  
+- **Modular design:** Unified JSON reporting for all checks
 
-Image & Tag Scanner: Detects use of latest tags and outdated images
+## Installation
 
-Privileged Pod Detector: Finds pods with privileged access, host network, or hostPath mounts
+| Step | Command                                      |
+|-------|---------------------------------------------|
+| Clone | `git clone https://github.com/yourusername/kube-sec-audit.git` |
+| Enter | `cd kube-sec-audit`                         |
+| Build | `go build -o kube-sec-audit cmd/main.go`    |
 
-Secret Detector: Finds exposed secrets in cluster resources
+## Usage
 
-Modular design with unified JSON reporting
+| Example                                   | Description                  |
+|-------------------------------------------|------------------------------|
+| `./kube-sec-audit -k ~/.kube/config -m all -o report.json` | Run all modules and save report |
+| `./kube-sec-audit -k ~/.kube/config -m rbac,podsec,imagecheck -o partial-report.json` | Run selected modules only     |
 
-Installation
-Clone the repository:
+## CLI Flags
 
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/kube-sec-audit.git
-cd kube-sec-audit
-Build the binary:
+| Flag | Description                             | Required | Default      |
+|-------|-------------------------------------|----------|--------------|
+| `-k`  | Path to kubeconfig file              | Yes      | —            |
+| `-m`  | Modules to run (comma separated)    | No       | all          |
+| `-o`  | Output report file path (JSON)      | No       | report.json  |
 
-bash
-Copy
-Edit
-go build -o kube-sec-audit cmd/main.go
-Usage
-Run all modules:
+## Available Modules
 
-bash
-Copy
-Edit
-./kube-sec-audit -k ~/.kube/config -m all -o report.json
-Run specific modules:
+| Module        | Description                                   |
+|---------------|-----------------------------------------------|
+| `rbac`        | Analyze RBAC roles and bindings               |
+| `podsec`      | Analyze Pod security contexts                  |
+| `netpol`      | Analyze NetworkPolicies                         |
+| `imagecheck`  | Scan container images and tags                  |
+| `privilege`   | Detect privileged pods and risky host access   |
+| `secrets`     | Detect exposed secrets                           |
+| `kubeaudit`   | Additional Kubernetes audit checks              |
+| `imagescanner`| Scan images for vulnerabilities (planned)      |
 
-bash
-Copy
-Edit
-./kube-sec-audit -k ~/.kube/config -m rbac,podsec,imagecheck -o partial-report.json
-Flags
--k : Path to kubeconfig file (required)
+## Contributing
 
--m : Comma-separated list of modules to run (default: all)
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
--o : Output report file path (default: report.json)
+## License
 
-Modules
-rbac: Analyze RBAC roles and bindings
-
-podsec: Analyze Pod security contexts
-
-netpol: Analyze NetworkPolicies
-
-imagecheck: Scan container images and tags
-
-privilege: Detect privileged pods and risky host access
-
-secrets: Detect exposed secrets
-
-kubeaudit: Additional Kubernetes audit checks
-
-imagescanner: Scan images for vulnerabilities (future)
-
-Contributing
-Contributions are welcome! Please open issues or pull requests.
-
-License
 MIT License
-
